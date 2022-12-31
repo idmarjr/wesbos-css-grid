@@ -7,6 +7,7 @@
 :root {
 	--yellow: #ffc600;
 	--black: #272727;
+	--white: #fff;
 }
 
 html {
@@ -44,7 +45,12 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin: 0 0 5px 0;
+	margin: 0 0 12px 0;
+}
+
+img {
+	display: block;
+	width: 100%;
 }
 
 /* Each item in our grid will contain numbers */
@@ -61,4 +67,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .item p {
 	margin: 0 0 5px 0;
+}
+
+/* My custom things */
+
+.content-block {
+	padding: 40px 0;
+}
+
+.img-holder {
+	padding: 12px;
+	background-color: var(--white);
 }
