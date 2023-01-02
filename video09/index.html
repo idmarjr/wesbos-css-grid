@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/style.css">
+	<title>Sizing Grid Items!</title>
+	<style>
+		.container {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(6, 1fr);
+		}
+
+		.container .item4 {
+			background-color: lime;
+			width: 150px; /* First grid will accomodate item with fix width. Later it will distribute the other items based in the remaining space */
+		}
+
+		.container .item5 {
+			background-color: aqua;
+			width: 250px; /* This can also be forced by item contetn, like a big image or a long word */
+		}
+
+		.container1 {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(6, 1fr);
+		}
+
+		.container1 .item4 {
+			color: var(--white);
+			background-color:darkred;
+			grid-column: span 2; /* Adjust item width based in the grid cells. In this case, grow it to fill 2 cells */
+		}
+
+		.container2 {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.container2 .item5 {
+			color: var(--white);
+			background-color:hotpink;
+			grid-column: span 3; /* If the space needed is largen than the available in total number of columns, item break to next line */
+		}
+
+		.container3 {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.container3 .item5 {
+			background-color:palegreen;
+			grid-column: span 4; /* Since this number is larger than the collumns defined at .contaner3, grid sistem will generate implicit columns to complete the gap. Check DevTools grid view to see line pattern differences */
+		}
+
+		.container4 {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.container4 .item1 {
+			background-color:yellowgreen;	
+			grid-row: span 3; /* Same behaviors and logic applies to  span rows */
+		}
+	</style>
+</head>
+
+<body>
+	<div class="content-block">
+		<h1>Fixed size to a item</h1>
+		<div class="container">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+			<div class="item item6">6</div>
+			<div class="item item7">7</div>
+			<div class="item item8">8</div>
+			<div class="item item9">9</div>
+			<div class="item item9">10</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Using <code>grid-column: span NUM;</code></h1>
+		<div class="container1">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+			<div class="item item6">6</div>
+			<div class="item item7">7</div>
+			<div class="item item8">8</div>
+			<div class="item item9">9</div>
+			<div class="item item9">10</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Using <code>grid-column: span NUM;</code></h1>
+		<div class="container2">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+			<div class="item item6">6</div>
+			<div class="item item7">7</div>
+			<div class="item item8">8</div>
+			<div class="item item9">9</div>
+			<div class="item item9">10</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Using <code>grid-column: span NUM;</code> with span larger than the defined <code>grid-template-columns</code></h1>
+		<div class="container3">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+			<div class="item item6">6</div>
+			<div class="item item7">7</div>
+			<div class="item item8">8</div>
+			<div class="item item9">9</div>
+			<div class="item item9">10</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Using <code>grid-row: span NUM;</code></h1>
+		<div class="container4">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+			<div class="item item6">6</div>
+			<div class="item item7">7</div>
+			<div class="item item8">8</div>
+			<div class="item item9">9</div>
+			<div class="item item9">10</div>
+		</div>
+	</div>
+</body>
+</html>
