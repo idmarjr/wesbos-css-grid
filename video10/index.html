@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/style.css">
+	<title>Placing Grid Items!</title>
+	<style>
+		.container {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.container .item7 {
+			background-color: aquamarine;
+			grid-column: span 2; /* span the item across 2 cells based in it's original position */
+		}
+
+		.container1 {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(6, 1fr);
+		}
+
+		.container1 .item3 {
+			background-color: azure;
+			grid-column-start: 3; /* Explicity define what column the item should start */
+			grid-column-end: 5; /* Explicity define what column the item should end */
+			/* By defining the end, we "force" the item size. If end is not defined, the regular value defined at grid-template-columns will take place*/
+		}
+
+		.container1 .item5 {
+			background-color: chartreuse;
+			grid-column: 2 / 5 /* Shorthand to "grid-column-start" and "grid-column-end" */
+		}
+
+		.container1 .item9 {
+			color: var(--white);
+			background-color: blueviolet;
+			grid-column: span 2 / 4 /* It's also possible to mix span instructions and hardcoded column definition */
+		}
+
+		.container2 {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.container2 .item5 {
+			background-color: coral;
+			grid-column: 3 / span 2; /* Since this conflict with grid-template-columns by "spaming" the element one more cell than the explicit definition, a implicit cell will be created to accomodate it */
+		}
+
+		.container3 {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.container3 .item5 {
+			background-color: cornflowerblue;
+			grid-column: 1 / -1; /* the -1 value as grid-column-end will target the last cell, doesnt mantter how many columns the grid have */
+			/* Using "1 / -1" is a good way to get a "full width" item in your grid */
+		}
+
+		.container4 {
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(2, 1fr);
+			/* grid-template-rows:  repeat(5, 1fr); */ /* Uncomment to see grid-row: 1/-1; work  (Line 83)*/
+		}
+
+		.container4 .item1 {
+			color: var(--white);
+			background-color: blue;
+			grid-row: 1 / span 3; /* Now span among rows */
+		}
+
+		.container4 .item2 {
+			color: var(--white);
+			background-color: red;
+			grid-row: 1 / -1; /* This will not work because we dont have a explicit "grid-template-rows" declared at the parent element. */
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="content-block">
+		<h1>Generic example of use `grid-column`</h1>
+		<div class="container">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+			<div class="item item6">6</div>
+			<div class="item item7">7</div>
+		</div>
+	</div>
+	
+	<div class="content-block">
+		<h1>Define item dimentions using <code>grid-column-start</code> and <code>grid-column-end</code></h1>
+		<div class="container1">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+			<div class="item item6">6</div>
+			<div class="item item7">7</div>
+			<div class="item item8">8</div>
+			<div class="item item9">9</div>
+			<div class="item item10">10</div>
+		</div>
+		<div class="content-block">
+			<div class="img-holder">
+				<img src="grid-column-start-end.png" alt="Diagram with Devtools line patterns meaning" />
+			</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Conflict between <code>grid-template-columns</code> and <code>grid-column</code></h1>
+		<div class="container2">
+			<div class="item item1">1</div>
+			<div class="item item3">3</div>
+			<div class="item item2">2</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Using <code>-1</code> value at  <code>grid-column</code></h1>
+		<div class="container3">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Same logic is valid to <code>grid-row</code></h1>
+		<div class="container4">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+		</div>
+	</div>
+	</body>
+</body>
+</html>
