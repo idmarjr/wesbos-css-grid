@@ -53,6 +53,15 @@ img {
 	width: 100%;
 }
 
+code {
+	display: inline-block;
+	font-family: monospace;
+	font-size: 0.8em;
+	padding: 0 3px;
+	border-radius: 3px;;
+	background-color: var(--white);
+}
+
 /* Each item in our grid will contain numbers */
 /* We center the contents of these items. You can also do this with flexbox too! */
 .item {
