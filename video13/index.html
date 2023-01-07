@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/style.css">
+	<title>Using minmax() for Responsive Grids!</title>
+	<style>
+
+		/* Checkout minmax() docs if needed: */
+		/* https://developer.mozilla.org/en-US/docs/Web/CSS/minmax */
+
+		.container {
+			display: grid;
+			grid-gap: 20px;
+			border: 10px solid var(--yellow);
+			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+			/* Few things taking place here: */
+			/* 1. auto-fill creates new explicit collumns if there's space available */
+			/* 2. minmax() define a minimum and a max size to each column */
+			/* 3. If a collumn is < 150px, the grid breaks it to a new row */
+			/* 4. max-width of a column change from 150px to larger until 150px are available to another collumn be added due to auto-fill */
+		}
+
+		.container2 {
+			display: grid;
+			grid-gap: 20px;
+			border: 10px solid var(--yellow);
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			/* Few things taking place here: */
+			/* 1. auto-fit increases the size of each column to use all the grid space available (Instead of creat new collumns) */
+			/* 2. minmax() define a minimum and a max size to each column */
+			/* 3. If a collumn is < 150px, the grid breaks it to a new row */
+			/* 4. max-width of a collumn will constantly increase based in the available space due to auto-fit */
+		}
+
+		/* Checkout minmax() docs if needed: */
+		/* https://developer.mozilla.org/en-US/docs/Web/CSS/minmax */
+
+		.container3 {
+			display: grid;
+			grid-gap: 20px;
+			border: 10px solid var(--yellow);
+			grid-template-columns: fit-content(140px) 100px 100px 100px; /* fit-contente() will make sure that column never exceed 140px but if it need less space, its size will adapt */
+		}
+
+	  </style>
+</head>
+
+<body>
+	<div class="content-block">
+		<h1>Using <code>auto-fill</code> and <code>minmax()</code></h1>
+		<div class="container">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Using <code>auto-fit</code> and <code>minmax()</code></h1>
+		<div class="container2">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Using <code>auto-fit</code> and <code>fit-content()</code></h1>
+		<div class="container3">
+			<div class="item item1">Large content here</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+		</div>
+	</div>
+
+</body>
+</html>
