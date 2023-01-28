@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/style.css">
+	<title>Grid Template Areas</title>
+	<style>
+		.container {
+			display: grid;
+			grid-gap: 20px;
+			grid-template-columns:  1fr 10fr 1fr;  /* Define a explicit grid to work with */
+			grid-template-rows: 200px 200px 100px; /* Define a explicit grid to work with */
+			grid-template-areas: /* In a "graphic way, name each part of the explicit grid created abobe with the name you want" */
+				"contentblock contentblock contentblock"
+				"sidebar1 sidebar1 sidebar2"
+				"footer footer sidebar2"
+			;
+		}
+
+		/* Per item, define the area name where it belong */
+		.container .item1 {grid-area: sidebar1;}
+		.container .item3 {grid-area: sidebar2;}
+		.container .item4 {grid-area: footer;}
+		.container .item2 {grid-area: contentblock;}
+
+
+		/* Now if you want to completely change the layout based in media-queries, you just need to redefine the template areas */
+		@media(min-width: 800px) {
+			.container {
+				grid-template-areas:
+					"sidebar1 contentblock sidebar2"
+					"sidebar1 contentblock sidebar2"
+					"footer footer ." /* Using "." will let that area empty */
+				;
+			}
+		}
+
+		.container2 {
+			display: grid;
+			grid-gap: 20px;
+			grid-template-areas:
+				"header header header"
+				"header header header"
+				"content content content"
+				"🦶 🦶 🦶"
+				"🦶 🦶 🦶"
+		}
+
+		.item1 {
+			grid-column: header-start / header-end; /* Alternative to hardcode numbers that start and end to fill the row */
+		}
+
+		.item5 {
+			grid-column: 🦶-start / 🦶-end;
+			grid-row-end: 🦶-end; /* Since there's no start, it anchors the bootm of the row */
+		}
+	  </style>
+</head>
+
+<body>
+	<div class="content-block">
+		<h1>Using <code>grid-template-areas</code></h1>
+		<div class="container">
+			<div class="item item1">
+				<p>Sidebar goes here.</p>
+			</div>
+			<div class="item item2">
+				<p>Page body will be located here</p>
+				<p>One more paragraph at the body</p>
+			</div>
+			<div class="item item3">
+				<p>Another Sidebar here.</p>
+			</div>
+			<div class="item item4">
+				<p>This is the page footer.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="content-block">
+		<h1>Using <code>-start</code> and <code>-end</code> to define items size and position</h1>
+		<div class="container2">
+			<div class="item item1">1</div>
+			<div class="item item2">2</div>
+			<div class="item item3">3</div>
+			<div class="item item4">4</div>
+			<div class="item item5">5</div>
+			<div class="item item6">6</div>
+			<div class="item item7">7</div>
+			<div class="item item8">8</div>
+			<div class="item item9">9</div>
+			<div class="item item10">10</div>
+		</div>
+	</div>
+</body>
+</html>
